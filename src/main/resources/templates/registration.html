@@ -1,0 +1,39 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorator="layouts/main.html">
+<div layout:fragment="myContent" >
+    <div class="row">
+        <div class="col-sm-8">
+            <form th:action="@{'/addUser'}" method="post" class="form">
+                <div class="form-group">
+                    <label>
+                        EMAIL :
+                    </label>
+                    <input type="email" name="email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>
+                        PASSWORD :
+                    </label>
+                    <input type="password" name="password" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>
+                        RE-PASSWORD :
+                    </label>
+                    <input type="password" name="rePassword" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>
+                        FULL-NAME :
+                    </label>
+                    <input type="text" name="fullName" class="form-control">
+                </div>
+
+                <button class="btn btn-success">REGISTER</button>
+            </form>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,40 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorator="layouts/main.html">
+    <div layout:fragment="myContent" >
+        <div class="row">
+            <div class="col-sm-8">
+                <h1>
+                    <span th:text = "${user.fullName}"></span>
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <h2>My orders</h2>
+                <table cellpadding="20" class="table table-stripped">
+                    <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th th:text = "#{label.name}">
+                        </th>
+                        <th th:text = "#{label.price}">
+                        </th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each = "i : ${orders}">
+                        <td th:text = "${i.id}"></td>
+                        <td th:text = "${i.book.name}"></td>
+                        <td th:text = "${i.book.price}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</html>

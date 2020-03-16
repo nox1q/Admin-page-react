@@ -1,0 +1,47 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorator="layouts/main.html">
+<div layout:fragment="myContent">
+    <div class="row">
+        <div class="col-sm-12">
+            <table cellpadding="20" class="table table-stripped">
+                <tbody>
+                    <tr>
+                        <td>
+                            Name :
+                        </td>
+                        <td th:text = "${book.name}"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Price :
+                        </td>
+                        <td th:text = "${book.price}"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Author :
+                        </td>
+                        <td th:text = "${book.author}"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Genres :
+                        </td>
+                        <td th:each = "i : ${book.genres}"  th:text="${i.name}"></td>
+                    </tr>
+                </tbody>
+            </table>
+<!--            <form th:action = "@{'/delete'}" method="post" sec:authorize="hasAnyRole('ROLE_ADMIN')">-->
+<!--                <input type="hidden" th:value = "${item.id}" name="id">-->
+<!--                <button class="btn btn-danger">DELETE ITEM</button>-->
+<!--            </form>-->
+                <form th:action = "@{'/addOrder'}" method="post" sec:authorize="isAuthenticated()">
+                    <input type="hidden" th:value = "${book.id}" name="id">
+                    <button class="btn btn-danger">ADD ORDER</button>
+                </form>
+        </div>
+    </div>
+</div>
+</html>

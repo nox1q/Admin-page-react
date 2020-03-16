@@ -1,0 +1,47 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorator="layouts/main.html">
+    <div layout:fragment="myContent" >
+
+        <div class="row">
+            <div class="col-sm-12">
+                <table cellpadding="20" class="table table-stripped">
+                    <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th th:text = "#{label.name}">
+                        </th>
+                        <th th:text = "#{label.price}">
+                        </th>
+                        <th th:text = "#{label.author}">
+                        </th>
+                        <th th:text = "#{label.details}">
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each = "i : ${books}">
+                        <td th:text = "${i.id}"></td>
+                        <td th:text = "${i.name}"></td>
+                        <td th:text = "${i.price}"></td>
+                        <td th:text = "${i.author}"></td>
+                        <td>
+                            <a th:href = "@{'/details/'+${i.id}}">DETAILS</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4">
+                                <a class="btn btn-info btn-sm ml-1" th:each = "i : ${#numbers.sequence(1, tabSize)}" th:text = ${i} th:href = "@{'/?page=' + ${i}}"></a>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</html>
